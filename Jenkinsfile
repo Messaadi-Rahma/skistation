@@ -28,15 +28,16 @@ pipeline {
         stage('Building our image') {
             steps {
                 script {
-                   sh "docker build ./ -t rahmamessadi23/skistation:$BUILD_NUMBER"
+                    dockerImage = docker.build(registry + ":$BUILD_NUMBER")
                 }
             }
         }
         stage('Deploy our image') {
             steps {
                 script {
-                    
-                sh "docker push rahmamessadi23/skistation:$BUILD_NUMBER"
+                    docker.withRegistry('', registryCredential) {
+                        dockerImage.push()
+                    }
                 }
             }
         }
