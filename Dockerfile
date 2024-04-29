@@ -1,4 +1,5 @@
-FROM openjdk:8-jdk-alpine
-EXPOSE 8082
-ADD target/skistation-rahma.war skistation.war
-ENTRYPOINT ["java","-jar","/skistation.war"]
+FROM openjdk:11
+EXPOSE 9089
+COPY target/ski-app.jar ski-app.jar
+ENTRYPOINT ["java","-jar","/ski-app.jar"]
+
