@@ -71,7 +71,7 @@ stage('Docker Compose') {
                     sh 'docker-compose build'
                     def gitHash = sh(script: 'git rev-parse HEAD', returnStdout: true).trim()
                     
-                    def gitHashTaggedImage = "nourbachchaouch/projetvalidation:${env.BUILD_NUMBER}"
+                    def gitHashTaggedImage = "lina191/project:${env.BUILD_NUMBER}"
                     
                    
                     sh "docker tag springboot-app $gitHashTaggedImage"
